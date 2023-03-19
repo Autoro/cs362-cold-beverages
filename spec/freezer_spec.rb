@@ -1,10 +1,18 @@
 require_relative '../lib/freezer'
 
+class TestFreezer < Freezer
+  attr_reader :power
+end
+
 describe 'A freezer' do
-  let(:freezer) { Freezer.new(100) }
+  let(:freezer) { TestFreezer.new(100) }
 
   it "has a capacity and temperature" do
     expect(freezer.capacity).to eq(100)
     expect(freezer.temperature).to eq(70)
+  end
+
+  it "can be turned on" do
+    expect { freezer.turn_on }.to change(freezer, :power).from(:off).to(:on)
   end
 end
