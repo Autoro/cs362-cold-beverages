@@ -11,4 +11,8 @@ class Vessel
   def empty?
     @current_volume == 0
   end
+
+  def fill
+    @current_volume = @volume
+  end
 end
