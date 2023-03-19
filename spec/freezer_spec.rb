@@ -15,4 +15,9 @@ describe 'A freezer' do
   it "can be turned on" do
     expect { freezer.turn_on }.to change(freezer, :power).from(:off).to(:on)
   end
+
+  it "can be turned off" do
+    freezer.turn_on
+    expect { freezer.turn_off }.to change(freezer, :power).from(:on).to(:off)
+  end
 end
