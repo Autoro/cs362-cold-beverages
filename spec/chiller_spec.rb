@@ -26,4 +26,8 @@ describe 'A chiller' do
     chiller.add(item)
     expect(chiller.contents).to include(item)
   end
+
+  it "can calculate remaining capacity" do
+    expect(chiller.remaining_capacity).to eq(100)
+  end
 end
