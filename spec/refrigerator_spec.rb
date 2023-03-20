@@ -30,4 +30,8 @@ describe 'A refrigerator' do
   it "can calculate its total capacity" do
     expect(refrigerator.total_capacity).to eq(chiller.capacity + freezer.capacity)
   end
+
+  it "can calculate its remaining capacity" do
+    expect(refrigerator.remaining_capacity).to eq(chiller.remaining_capacity + freezer.remaining_capacity)
+  end
 end
