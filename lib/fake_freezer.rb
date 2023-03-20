@@ -1,5 +1,5 @@
 require_relative 'freezer'
 
-class TestFreezer < Freezer
+class FakeFreezer < Freezer
   attr_reader :power, :contents
 end

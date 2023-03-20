@@ -1,7 +1,7 @@
-require_relative '../lib/chiller_fake'
+require_relative '../lib/fake_chiller'
 
 describe 'A chiller' do
-  let(:chiller) { TestChiller.new(100) }
+  let(:chiller) { FakeChiller.new(100) }
   let(:item) { Item.new("FAKE", 5) }
 
   it "has a capacity and temperature" do

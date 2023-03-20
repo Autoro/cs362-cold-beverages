@@ -1,5 +1,5 @@
 require_relative 'chiller'
 
-class TestChiller < Chiller
+class FakeChiller < Chiller
   attr_reader :power, :contents
 end
