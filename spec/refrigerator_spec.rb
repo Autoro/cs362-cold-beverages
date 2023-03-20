@@ -1,9 +1,10 @@
 require_relative '../lib/refrigerator'
 require_relative '../lib/fake_chiller'
+require_relative '../lib/fake_freezer'
 
 describe 'A refrigerator' do
   let(:chiller) { FakeChiller.new(100) }
-  let(:freezer) { Freezer.new(100) }
+  let(:freezer) { FakeFreezer.new(100) }
   let(:reservoir) { WaterReservoir.new }
   let(:dispenser) { WaterDispenser.new(reservoir) }
   let(:refrigerator) { Refrigerator.new(chiller, freezer, dispenser, reservoir) }
@@ -19,5 +20,10 @@ describe 'A refrigerator' do
   it "can chill an item" do
     refrigerator.chill(item)
     expect(refrigerator.chiller.contents).to include(item)
+  end
+
+  it "can freeze an item" do
+    refrigerator.freeze(item)
+    expect(refrigerator.freezer.contents).to include(item)
   end
 end
