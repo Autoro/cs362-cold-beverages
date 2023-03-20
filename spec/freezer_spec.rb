@@ -26,4 +26,8 @@ describe 'A freezer' do
     freezer.add(item)
     expect(freezer.contents).to include(item)
   end
+
+  it "can calculate remaining capacity" do
+    expect(freezer.remaining_capacity).to eq(100)
+  end
 end
