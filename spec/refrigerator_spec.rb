@@ -68,4 +68,14 @@ describe 'A refrigerator' do
     refrigerator.set_freezer_level(5)
     expect(freezer).to have_received(:set_level).with(5)
   end
+
+  it "can print out its status" do
+    expect(refrigerator.to_s).to eq(<<~STATUS
+        Power: off
+        Storage: 200 of 200 available
+        Temps: Chiller is 70, Freezer is 70
+        Water: Reservoir has 0 remaining.
+        STATUS
+    )
+  end
 end
