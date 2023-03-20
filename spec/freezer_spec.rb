@@ -30,4 +30,8 @@ describe 'A freezer' do
   it "can calculate remaining capacity" do
     expect(freezer.remaining_capacity).to eq(100)
   end
+
+  it "can change temperature after setting a level" do
+    expect { freezer.set_level(5) }.to change(freezer, :temperature).from(70).to(20)
+  end
 end
