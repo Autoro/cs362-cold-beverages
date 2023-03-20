@@ -26,4 +26,8 @@ describe 'A refrigerator' do
     refrigerator.freeze(item)
     expect(refrigerator.freezer.contents).to include(item)
   end
+
+  it "can calculate its total capacity" do
+    expect(refrigerator.total_capacity).to eq(chiller.capacity + freezer.capacity)
+  end
 end
