@@ -9,7 +9,7 @@ class WaterReservoir
   end
 
   def empty?
-    @current_water_volume == 0
+    @current_water_volume <= 0
   end
 
   def fill
