@@ -1,4 +1,4 @@
-require_relative '../lib/refrigerator'
+require_relative '../lib/fake_refrigerator'
 require_relative '../lib/fake_chiller'
 require_relative '../lib/fake_freezer'
 
@@ -7,7 +7,7 @@ describe 'A refrigerator' do
   let(:freezer) { FakeFreezer.new(100) }
   let(:reservoir) { WaterReservoir.new }
   let(:dispenser) { WaterDispenser.new(reservoir) }
-  let(:refrigerator) { Refrigerator.new(chiller, freezer, dispenser, reservoir) }
+  let(:refrigerator) { FakeRefrigerator.new(chiller, freezer, dispenser, reservoir) }
   let(:item) { Item.new("FAKE", 5) }
 
   it "has a chiller, freezer, dispenser, and reservoir" do
@@ -33,5 +33,11 @@ describe 'A refrigerator' do
 
   it "can calculate its remaining capacity" do
     expect(refrigerator.remaining_capacity).to eq(chiller.remaining_capacity + freezer.remaining_capacity)
+  end
+
+  it "can be plugged in and turn power on" do
+    expect { refrigerator.plug_in }.to change(refrigerator, :power).from(:off).to(:on)
+                                  .and change(refrigerator.chiller, :power).from(:off).to(:on)
+                                  .and change(refrigerator.freezer, :power).from(:off).to(:on)
   end
 end
