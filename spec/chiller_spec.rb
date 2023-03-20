@@ -15,4 +15,9 @@ describe 'A chiller' do
   it "can be turned on" do
     expect { chiller.turn_on }.to change(chiller, :power).from(:off).to(:on)
   end
+
+  it "can be turned off" do
+    chiller.turn_on
+    expect { chiller.turn_off }. to change(chiller, :power).from(:on).to(:off)
+  end
 end
