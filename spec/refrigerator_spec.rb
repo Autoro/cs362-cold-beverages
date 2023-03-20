@@ -36,15 +36,22 @@ describe 'A refrigerator' do
   end
 
   it "can be plugged in and turn power on" do
+    allow(chiller).to receive(:turn_on)
+    allow(freezer).to receive(:turn_on)
+
     expect { refrigerator.plug_in }.to change(refrigerator, :power).from(:off).to(:on)
-                                  .and change(refrigerator.chiller, :power).from(:off).to(:on)
-                                  .and change(refrigerator.freezer, :power).from(:off).to(:on)
+    expect(chiller).to have_received(:turn_on)
+    expect(freezer).to have_received(:turn_on)
   end
 
   it "can be unplugged and turn power off" do
+    allow(chiller).to receive(:turn_off)
+    allow(freezer).to receive(:turn_off)
+
     refrigerator.plug_in
+
     expect {refrigerator.unplug }.to change(refrigerator, :power).from(:on).to(:off)
-                                .and change(refrigerator.chiller, :power).from(:on).to(:off)
-                                .and change(refrigerator.freezer, :power).from(:on).to(:off)
+    expect(chiller).to have_received(:turn_off)
+    expect(freezer).to have_received(:turn_off)
   end
 end
