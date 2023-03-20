@@ -30,4 +30,8 @@ describe 'A chiller' do
   it "can calculate remaining capacity" do
     expect(chiller.remaining_capacity).to eq(100)
   end
+
+  it "can change temperature after setting a level" do
+    expect { chiller.set_level(5) }.to change(chiller, :temperature).from(70).to(45)
+  end
 end
