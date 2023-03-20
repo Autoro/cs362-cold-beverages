@@ -40,4 +40,11 @@ describe 'A refrigerator' do
                                   .and change(refrigerator.chiller, :power).from(:off).to(:on)
                                   .and change(refrigerator.freezer, :power).from(:off).to(:on)
   end
+
+  it "can be unplugged and turn power off" do
+    refrigerator.plug_in
+    expect {refrigerator.unplug }.to change(refrigerator, :power).from(:on).to(:off)
+                                .and change(refrigerator.chiller, :power).from(:on).to(:off)
+                                .and change(refrigerator.freezer, :power).from(:on).to(:off)
+  end
 end
