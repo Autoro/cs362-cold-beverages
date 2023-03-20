@@ -1,8 +1,4 @@
-require_relative '../lib/freezer'
-
-class TestFreezer < Freezer
-  attr_reader :power, :contents
-end
+require_relative '../lib/freezer_fake'
 
 describe 'A freezer' do
   let(:freezer) { TestFreezer.new(100) }

@@ -1,8 +1,4 @@
-require_relative '../lib/chiller'
-
-class TestChiller < Chiller
-  attr_reader :power, :contents
-end
+require_relative '../lib/chiller_fake'
 
 describe 'A chiller' do
   let(:chiller) { TestChiller.new(100) }
