@@ -54,4 +54,11 @@ describe 'A refrigerator' do
     expect(chiller).to have_received(:turn_off)
     expect(freezer).to have_received(:turn_off)
   end
+
+  it "can set the chiller level" do
+    allow(chiller).to receive(:set_level)
+
+    refrigerator.set_chiller_level(5)
+    expect(chiller).to have_received(:set_level).with(5)
+  end
 end
